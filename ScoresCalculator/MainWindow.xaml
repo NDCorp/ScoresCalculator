@@ -1,0 +1,85 @@
+﻿
+<Window x:Class="ScoreCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScoreCalculator"
+        mc:Ignorable="d"
+        Title="Score Calculator" Height="633.742" Width="614" ResizeMode="NoResize">
+    <Grid Background="Azure">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.ColumnSpan="3">
+            <Label Name="lblTitle" Content="Exam Scores" Margin="2" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        </Viewbox>
+        <Grid Grid.Row="1" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Label Name="lblSection1" Content="Section 1" Margin="2" FontSize="20" FontWeight="Bold" Foreground="Orange" HorizontalContentAlignment="Center"/>
+            <ListBox  Grid.Row="1" Name="lstSection1" ItemsSource="{Binding ExamScoreS1, Mode=OneWay}" Margin="5" FontSize="18" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Label Name="lblSection2" Content="Section 2" Margin="2" FontSize="20" FontWeight="Bold" Foreground="Green" HorizontalContentAlignment="Center"/>
+            <ListBox Grid.Row="1" Name="lstSection2" ItemsSource="{Binding ExamScoreS2, Mode=TwoWay}" Margin="5" FontSize="18" 
+                     ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Label Name="lblSection3" Content="Section 3" Margin="2" FontSize="20" FontWeight="Bold" Foreground="Blue" HorizontalContentAlignment="Center"/>
+            <ListBox Grid.Row="1" Name="lstSection3" ItemsSource="{Binding ExamScoreS3, Mode=TwoWay}" Margin="5" FontSize="18" 
+                     ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Margin="2" HorizontalAlignment="Center">
+            <Label Name="lblMaxScoreS1" Content="{Binding MaxScoreS1, Mode=OneWay}" ContentStringFormat="Max score: 0.##" Margin="5" FontSize="18"/>
+            <Label Name="lblMinScoreS1" Content="{Binding MinScoreS1, Mode=OneWay}" ContentStringFormat="Min score: 0.##" Margin="5" FontSize="18"/>
+            <Label Name="lblAvgScoreS1" Content="{Binding AvgScoreS1, Mode=OneWay}" ContentStringFormat="Average score: 0.##" Margin="5" FontSize="18"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="2" HorizontalAlignment="Center">
+            <Label Name="lblMaxScoreS2" Content="{Binding MaxScoreS2, Mode=OneWay}" ContentStringFormat="Max score: 0.##" Margin="5" FontSize="18"/>
+            <Label Name="lblMinScoreS2" Content="{Binding MinScoreS2, Mode=OneWay}" ContentStringFormat="Min score: 0.##" Margin="5" FontSize="18"/>
+            <Label Name="lblAvgScoreS2" Content="{Binding AvgScoreS2, Mode=OneWay}" ContentStringFormat="Average score: 0.##" Margin="5" FontSize="18"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Margin="2" HorizontalAlignment="Center">
+            <Label Name="lblMaxScoreS3" Content="{Binding MaxScoreS3, Mode=OneWay}" ContentStringFormat="Max score: 0.##" Margin="5" FontSize="18"/>
+            <Label Name="lblMinScoreS3" Content="{Binding MinScoreS3, Mode=OneWay}" ContentStringFormat="Min score: 0.##" Margin="5" FontSize="18"/>
+            <Label Name="lblAvgScoreS3" Content="{Binding AvgScoreS3, Mode=OneWay}" ContentStringFormat="Average score: 0.##" Margin="5" FontSize="18"/>
+        </StackPanel>
+
+        <Viewbox Grid.Row="3" Grid.ColumnSpan="2">
+            <StackPanel Margin="2">
+                <Label  Name="lblAvgAllSect" Content="{Binding AvgAllSect, Mode=OneWay}" ContentStringFormat="Global average score: 0.##" Margin="2" FontWeight="Bold"/>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                    <Label Content="{Binding HighScore, Mode=OneWay}" ContentStringFormat="Highest score: 0.##  in section(s):" FontWeight="Bold"/>
+                    <Label  Name="lblHighSectNbr" Content="{Binding HighSectNbr, Mode=OneWay}" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Margin="2" Orientation="Horizontal">
+                    <Label Name="lblLowest" Content="{Binding LowScore, Mode=OneWay}" ContentStringFormat="Lowest score: 0.##  in section(s):" FontWeight="Bold"/>
+                    <Label  Name="lblLowSectNbr" Content="{Binding LowSectNbr, Mode=OneWay}" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+        </Viewbox>
+
+        <Button Grid.Row="3" Grid.Column="2" Name="btnCalculate" Click="btnCalculate_Click" Content="Calculate Scores" Margin="15 40" FontSize="20"/>
+    </Grid>
+</Window>
