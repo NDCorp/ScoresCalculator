@@ -80,6 +80,6 @@
             </StackPanel>
         </Viewbox>
 
-        <Button Grid.Row="3" Grid.Column="2" Name="btnCalculate" Click="btnCalculate_Click" Content="Calculate Scores" Margin="15 40" FontSize="20"/>
+        <Button Grid.Row="3" Grid.Column="2" Name="btnCalculate" Click="BtnCalculate_Click" Content="Calculate Scores" Margin="15 40" FontSize="20"/>
     </Grid>
 </Window>

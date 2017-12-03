@@ -17,7 +17,7 @@ namespace ScoreCalculator
             DataContext = vm;
         }
 
-        private void btnCalculate_Click(object sender, RoutedEventArgs e)
+        private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
             Exception err = new Exception();
 
@@ -25,6 +25,10 @@ namespace ScoreCalculator
                 MessageBox.Show(err.Message, err.HResult.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
             else
                 vm.CalculateScore();
+
+            lstSection1.Items.Refresh();
+            lstSection2.Items.Refresh();
+            lstSection3.Items.Refresh();
         }
     }
 }
